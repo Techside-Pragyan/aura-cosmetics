@@ -2,11 +2,12 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { Sparkles, Star, Crown, Scissors } from "lucide-react";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 
 const services = [
     {
-        icon: "👰",
+        icon: <Crown size={28} color="#B76E79" />,
         title: "Bridal Makeup",
         description:
             "Transform into the most beautiful bride with our expert bridal artistry. HD & Airbrush techniques.",
@@ -14,7 +15,7 @@ const services = [
         color: "#B76E79",
     },
     {
-        icon: "🎉",
+        icon: <Star size={28} color="#D4A574" />,
         title: "Party Makeup",
         description:
             "Glamorous looks for every occasion. From cocktails to red carpet events.",
@@ -22,7 +23,7 @@ const services = [
         color: "#D4A574",
     },
     {
-        icon: "✨",
+        icon: <Sparkles size={28} color="#E8C9A0" />,
         title: "Skin Consultation",
         description:
             "Personalized skincare analysis and routine recommendations by certified dermatologists.",
@@ -30,7 +31,7 @@ const services = [
         color: "#E8C9A0",
     },
     {
-        icon: "💇‍♀️",
+        icon: <Scissors size={28} color="#F2C4C4" />,
         title: "Hair Styling",
         description:
             "Trendy hairstyles, color treatments, and hair care services by top stylists.",

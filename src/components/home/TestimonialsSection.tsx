@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 
 const testimonials = [
@@ -11,7 +12,7 @@ const testimonials = [
         role: "Bride",
         text: "Aura made my wedding day absolutely magical! The makeup lasted all day and I felt like a queen. Every detail was perfect - from the subtle contouring to the stunning eye look. Highly recommend!",
         rating: 5,
-        image: "👰",
+        image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop",
     },
     {
         id: 2,
@@ -19,7 +20,7 @@ const testimonials = [
         role: "Fashion Blogger",
         text: "I've worked with many MUAs but Aura is on another level. The attention to detail, the product quality, and the final result is always Instagram-worthy. My go-to for every shoot!",
         rating: 5,
-        image: "💫",
+        image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=200&auto=format&fit=crop",
     },
     {
         id: 3,
@@ -27,7 +28,7 @@ const testimonials = [
         role: "Corporate Professional",
         text: "The skin consultation changed my entire routine! My skin has never looked better. The team is knowledgeable, patient, and truly cares about your skin health. Worth every penny.",
         rating: 5,
-        image: "✨",
+        image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&auto=format&fit=crop",
     },
     {
         id: 4,
@@ -35,7 +36,7 @@ const testimonials = [
         role: "Model",
         text: "Working with Aura Cosmetics for my portfolio shoot was an incredible experience. They understood my vision perfectly and delivered beyond expectations. Truly professional!",
         rating: 5,
-        image: "🌟",
+        image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop",
     },
 ];
 
@@ -121,17 +122,21 @@ export default function TestimonialsSection() {
                                 width: "70px",
                                 height: "70px",
                                 borderRadius: "50%",
-                                background:
-                                    "linear-gradient(135deg, #B76E79, #D4A574)",
                                 display: "flex",
                                 alignItems: "center",
                                 justifyContent: "center",
-                                fontSize: "2rem",
                                 margin: "0 auto 1.5rem",
                                 boxShadow: "0 4px 20px rgba(183, 110, 121, 0.2)",
+                                position: "relative",
+                                overflow: "hidden"
                             }}
                         >
-                            {testimonials[currentIndex].image}
+                            <Image
+                                src={testimonials[currentIndex].image}
+                                alt={testimonials[currentIndex].name}
+                                fill
+                                style={{ objectFit: "cover" }}
+                            />
                         </div>
 
                         {/* Stars */}

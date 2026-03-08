@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 
 const products = [
@@ -15,8 +16,7 @@ const products = [
         rating: 4.8,
         reviews: 124,
         badge: "Bestseller",
-        gradient: "linear-gradient(135deg, #F2C4C4 0%, #E8D5C4 100%)",
-        icon: "🌹",
+        image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=800&auto=format&fit=crop",
     },
     {
         id: 2,
@@ -27,8 +27,7 @@ const products = [
         rating: 4.9,
         reviews: 89,
         badge: "New",
-        gradient: "linear-gradient(135deg, #B76E79 0%, #D4A574 100%)",
-        icon: "💄",
+        image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?q=80&w=800&auto=format&fit=crop",
     },
     {
         id: 3,
@@ -39,8 +38,7 @@ const products = [
         rating: 4.7,
         reviews: 156,
         badge: "Popular",
-        gradient: "linear-gradient(135deg, #E8C9A0 0%, #D4A574 100%)",
-        icon: "✨",
+        image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?q=80&w=800&auto=format&fit=crop",
     },
     {
         id: 4,
@@ -51,8 +49,7 @@ const products = [
         rating: 4.6,
         reviews: 78,
         badge: "Sale",
-        gradient: "linear-gradient(135deg, #F5E6D3 0%, #F2C4C4 100%)",
-        icon: "🧴",
+        image: "https://images.unsplash.com/photo-1567683930869-70bd9d8c47ff?q=80&w=800&auto=format&fit=crop",
     },
 ];
 
@@ -146,14 +143,19 @@ export default function FeaturedProducts() {
                         <div
                             style={{
                                 height: "220px",
-                                background: product.gradient,
                                 display: "flex",
                                 alignItems: "center",
                                 justifyContent: "center",
                                 position: "relative",
+                                overflow: "hidden"
                             }}
                         >
-                            <span style={{ fontSize: "4rem" }}>{product.icon}</span>
+                            <Image
+                                src={product.image}
+                                alt={product.name}
+                                fill
+                                style={{ objectFit: "cover" }}
+                            />
 
                             {/* Badge */}
                             <span

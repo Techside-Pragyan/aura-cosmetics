@@ -2,15 +2,16 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 
 const galleryItems = [
-    { gradient: "linear-gradient(135deg, #B76E79, #D4A574)", icon: "👰", label: "Bridal" },
-    { gradient: "linear-gradient(135deg, #D4A574, #E8C9A0)", icon: "🎉", label: "Party" },
-    { gradient: "linear-gradient(135deg, #E8D5C4, #F2C4C4)", icon: "📸", label: "Editorial" },
-    { gradient: "linear-gradient(135deg, #F2C4C4, #B76E79)", icon: "💅", label: "Glam" },
-    { gradient: "linear-gradient(135deg, #E8C9A0, #B76E79)", icon: "🌟", label: "Celebrity" },
-    { gradient: "linear-gradient(135deg, #D4A574, #F2C4C4)", icon: "💄", label: "Natural" },
+    { image: "https://images.unsplash.com/photo-1595476108010-b4d1f10d5e43?q=80&w=800&auto=format&fit=crop", label: "Bridal" },
+    { image: "https://images.unsplash.com/photo-1512496115851-a1c8eacb9136?q=80&w=800&auto=format&fit=crop", label: "Party" },
+    { image: "https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=800&auto=format&fit=crop", label: "Editorial" },
+    { image: "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?q=80&w=800&auto=format&fit=crop", label: "Glam" },
+    { image: "https://images.unsplash.com/photo-1526045612212-70caf35c14df?q=80&w=800&auto=format&fit=crop", label: "Celebrity" },
+    { image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800&auto=format&fit=crop", label: "Natural" },
 ];
 
 export default function GalleryPreview() {
@@ -86,33 +87,40 @@ export default function GalleryPreview() {
                         transition={{ duration: 0.5, delay: i * 0.1 }}
                         whileHover={{ scale: 1.03 }}
                         style={{
-                            background: item.gradient,
                             borderRadius: "16px",
                             overflow: "hidden",
                             cursor: "pointer",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            flexDirection: "column",
-                            gap: "0.75rem",
                             position: "relative",
                             gridColumn: i === 0 ? "span 2" : "span 1",
                             gridRow: i === 0 ? "span 1" : "span 1",
                         }}
                     >
-                        <span style={{ fontSize: "3rem", opacity: 0.4 }}>
-                            {item.icon}
-                        </span>
-                        <span
-                            style={{
-                                fontFamily: "'Playfair Display', serif",
-                                fontSize: "1rem",
-                                color: "rgba(255,255,255,0.6)",
-                                fontWeight: 500,
-                            }}
-                        >
-                            {item.label}
-                        </span>
+                        <Image
+                            src={item.image}
+                            alt={item.label}
+                            fill
+                            style={{ objectFit: "cover", transition: "transform 0.5s ease" }}
+                            className="gallery-img"
+                        />
+                        <div style={{
+                            position: "absolute",
+                            inset: 0,
+                            background: "linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 50%)",
+                            display: "flex",
+                            alignItems: "flex-end",
+                            padding: "1.5rem"
+                        }}>
+                            <span
+                                style={{
+                                    fontFamily: "'Playfair Display', serif",
+                                    fontSize: "1.2rem",
+                                    color: "white",
+                                    fontWeight: 600,
+                                }}
+                            >
+                                {item.label}
+                            </span>
+                        </div>
 
                         {/* Hover Overlay */}
                         <motion.div
@@ -173,6 +181,9 @@ export default function GalleryPreview() {
             grid-template-columns: 1fr !important;
             grid-template-rows: repeat(6, 160px) !important;
           }
+        }
+        .gallery-grid > div:hover .gallery-img {
+            transform: scale(1.05);
         }
       `}</style>
         </SectionWrapper>
