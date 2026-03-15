@@ -49,7 +49,7 @@ const products = [
         rating: 4.6,
         reviews: 78,
         badge: "Sale",
-        image: "https://images.unsplash.com/photo-1567683930869-70bd9d8c47ff?q=80&w=800&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1596462502278-27bf85033e5a?q=80&w=800&auto=format&fit=crop",
     },
 ];
 
@@ -156,6 +156,7 @@ export default function FeaturedProducts() {
                                 fill
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 style={{ objectFit: "cover" }}
+                                priority={i < 2}
                             />
 
                             {/* Badge */}
